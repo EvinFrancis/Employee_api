@@ -21,4 +21,5 @@ from Empapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Employee/',views.Employee.as_view() ),
+    path('Employee/<int:id>/',views.Employee.as_view() ),
 ]

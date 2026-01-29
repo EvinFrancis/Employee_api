@@ -4,3 +4,8 @@ class taskszz(serializers.ModelSerializer):
     class Meta:
         model=EmployeeDb
         fields="__all__"
+        
+        extra_kwargs={
+            "name":{'required':True},
+            "company":{'required':True}
+        }

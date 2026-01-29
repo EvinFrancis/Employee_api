@@ -57,7 +57,7 @@ class Employee(APIView):
         
      # Pass existing employee instance + new data to serializer
 
-        obj=taskszz(Emp,data=data) # partial=True is the KEY difference for PATCH................ 
+        obj=taskszz(Emp,data=data,partial=True) # partial=True is the KEY difference for PATCH................ 
         
         #Take the existing Employee record (Emp) and 
         #update it using the new data (data) through the serializer.”
@@ -69,4 +69,15 @@ class Employee(APIView):
             obj.save()
             return Response("data partially updated succesfully....",status=status.HTTP_200_OK)
         return Response("invalid data....///",status=status.HTTP_400_BAD_REQUEST)
+    
 
+
+#delete./..............
+
+    def delete(self,request,id):
+        try:
+            emp=EmployeeDb.objects.get(Emp_id=id) 
+            emp.delete()
+            return Response('deleted succesfully.......')
+        except EmployeeDb.DoesNotExist:
+            return Response("student doseNot Exist..",status.HTTP_404_NOT_FOUND)
